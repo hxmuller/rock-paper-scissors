@@ -52,7 +52,11 @@ def beats(one, two):
             (one == 'paper' and two == 'rock'))
 
 
-if __name__ == '__main__':
+def main():
+    """Launcher."""
     game = Game(Player(), Player())
     game.play_game()
+
+if __name__ == '__main__':
+    main()
 
