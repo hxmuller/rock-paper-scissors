@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
 
-"""This program plays a game of Rock, Paper, Scissors between two Players,
-and reports both Player's scores each round."""
+""" Rock, Paper, Scissors Game
 
+This program plays a game of Rock, Paper, Scissors between two
+Players, and reports both Player's scores each round.
+"""
+
+# imports
+
+# global variables
 moves = ['rock', 'paper', 'scissors']
 
-"""The Player class is the parent class for all of the Players
-in this game"""
 
-
+# class definitions
 class Player:
+    """The Player class is the parent class for all of the Players
+    in this game"""
+
+
     def move(self):
         return 'rock'
 
     def learn(self, my_move, their_move):
         pass
-
-
-def beats(one, two):
-    return ((one == 'rock' and two == 'scissors') or
-            (one == 'scissors' and two == 'paper') or
-            (one == 'paper' and two == 'rock'))
 
 
 class Game:
@@ -41,6 +43,13 @@ class Game:
             print(f"Round {round}:")
             self.play_round()
         print("Game over!")
+
+
+# function definitions
+def beats(one, two):
+    return ((one == 'rock' and two == 'scissors') or
+            (one == 'scissors' and two == 'paper') or
+            (one == 'paper' and two == 'rock'))
 
 
 if __name__ == '__main__':
