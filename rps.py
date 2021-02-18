@@ -87,6 +87,8 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
+        self.p1.score = 0
+        self.p2.score = 0
 
     # TODO: call learn() method on each player object
     #
@@ -100,9 +102,12 @@ class Game:
         if move1 == move2:
             print("** TIE **")
         elif beats(move1, move2):
+            self.p1.score += 1
             print("** PLAYER ONE WINS **")
         else:
+            self.p2.score += 1
             print("** PLAYER TWO WINS **")
+        print(f"Score: Player One {self.p1.score}, Player Two {self.p2.score}")
 
     # TODO: print:
     #       - which player won
