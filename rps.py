@@ -102,7 +102,7 @@ class Game:
     #       - which player won
     #       - final scores
     def play_game(self):
-        print("Game start!")
+        print("Rock Paper Scissors, Go!")
         for round in range(3):
             print(f"Round {round}:")
             self.play_round()
