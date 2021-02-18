@@ -38,10 +38,14 @@ class RandomPlayer(Player):
         return random.choice(moves)
 
 
-
-# TODO: define HumanPlayer subclass
-#       - include move method requesting input (see demo)
-#       - move method should also validate input (see demo)
+class HumanPlayer(Player):
+    """The HumanPlayer requests validated input"""
+    
+    def move(self):
+        human_input = ""
+        while human_input not in moves:
+            human_input = input("Rock, paper, scissors? > ")
+        return human_input
 
 
 # TODO: define ReflectPlayer subclass
@@ -132,7 +136,7 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(RandomPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), RandomPlayer())
     game.play_game()
 
 if __name__ == '__main__':
