@@ -9,6 +9,7 @@ Players, and reports both Player's scores each round.
 
 # imports TODO: Remove comment when done
 import random
+import itertools
 
 # global variables TODO: Remove comment when done
 # NOTE: this is the only global variable 
@@ -48,12 +49,6 @@ class HumanPlayer(Player):
         return human_input
 
 
-# TODO: define ReflectPlayer subclass
-#       - remembers opponent's last move, playing that during
-#           current move
-#         - implemented in learn() method which saves info
-#             in instance variable
-#       - what to do for first move?
 class ReflectPlayer(Player):
     """The ReflectPlayer remembers opponent's last move, playing
     that during the current move"""
@@ -68,12 +63,23 @@ class ReflectPlayer(Player):
         self.last_move = their_move
         
 
+class CyclePlayer(Player):
+    """The CyclePlayer remembers its last move, and cycles through
+    the moves"""
 
-# TODO: define CyclePlayer subclass
-#       - remembers its last move, cycles through moves
-#         - implemented in learn() method which saves info
-#             in instance variable
-#       - what to do for first move?
+    def __init__(self):
+        self.last_move = random.choice(moves)
+
+    def move(self):
+        if self.last_move == 'rock':
+            return 'paper'
+        elif self.last_move == 'paper':
+            return 'scissors'
+        else:
+            return 'rock'
+
+    def learn(self, my_move, their_move):
+        self.last_move = my_move
 
 
 # TODO: update Game class to display:
@@ -149,7 +155,7 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(HumanPlayer(), ReflectPlayer())
+    game = Game(HumanPlayer(), CyclePlayer())
     game.play_game()
 
 if __name__ == '__main__':
