@@ -54,6 +54,19 @@ class HumanPlayer(Player):
 #         - implemented in learn() method which saves info
 #             in instance variable
 #       - what to do for first move?
+class ReflectPlayer(Player):
+    """The ReflectPlayer remembers opponent's last move, playing
+    that during the current move"""
+
+    def __init__(self):
+        self.last_move = random.choice(moves)
+
+    def move(self):
+        return self.last_move
+
+    def learn(self, my_move, their_move):
+        self.last_move = their_move
+        
 
 
 # TODO: define CyclePlayer subclass
@@ -136,7 +149,7 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(HumanPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), ReflectPlayer())
     game.play_game()
 
 if __name__ == '__main__':
