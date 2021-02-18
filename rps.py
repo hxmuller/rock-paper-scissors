@@ -90,9 +90,6 @@ class Game:
         self.p1.score = 0
         self.p2.score = 0
 
-    # TODO: call learn() method on each player object
-    #
-    #       print results of round
     def play_round(self):
         move1 = self.p1.move()
         move2 = self.p2.move()
