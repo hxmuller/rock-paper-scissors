@@ -8,6 +8,7 @@ Players, and reports both Player's scores each round.
 """
 
 # imports TODO: Remove comment when done
+import random
 
 # global variables TODO: Remove comment when done
 # NOTE: this is the only global variable 
@@ -30,8 +31,12 @@ class Player:
 # TODO: test each Player subclass against HumanPlayer
 
 
-# TODO: define RandomPlayer subclass
-#       - chooses move randomly
+class RandomPlayer(Player):
+    """The RandomPlayer subclass selects a move randomly"""
+
+    def move(self):
+        return random.choice(moves)
+
 
 
 # TODO: define HumanPlayer subclass
@@ -120,7 +125,7 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(Player(), Player())
+    game = Game(RandomPlayer(), RandomPlayer())
     game.play_game()
 
 if __name__ == '__main__':
