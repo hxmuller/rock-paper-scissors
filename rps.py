@@ -113,7 +113,6 @@ class Game:
     #       - human player types quit
     #       - one player ahead 3 points
 
-# function definitions TODO: Remove comment when done
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
             (one == 'scissors' and two == 'paper') or
