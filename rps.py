@@ -104,7 +104,7 @@ class Game:
     def play_game(self):
         print("Rock Paper Scissors, Go!")
         for round in range(3):
-            print(f"Round {round}:")
+            print(f"Round {round} --")
             self.play_round()
         print("Game over!")
 
