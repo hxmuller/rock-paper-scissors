@@ -97,6 +97,12 @@ class Game:
         print(f"Player 1: {move1}  Player 2: {move2}")
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
+        if move1 == move2:
+            print("** TIE **")
+        elif beats(move1, move2):
+            print("** PLAYER ONE WINS **")
+        else:
+            print("** PLAYER TWO WINS **")
 
     # TODO: print:
     #       - which player won
