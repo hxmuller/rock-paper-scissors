@@ -150,9 +150,6 @@ def beats(one, two):
             (one == 'paper' and two == 'rock'))
 
 
-# TODO: define input() function for human player
-
-
 def main():
     """Launcher."""
     game = Game(HumanPlayer(), CyclePlayer())
