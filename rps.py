@@ -110,8 +110,8 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
-        self.p1.score = 0
-        self.p2.score = 0
+        self.p1.round_score = 0
+        self.p2.round_score = 0
 
     def play_round(self):
         move1 = self.p1.move()
@@ -119,15 +119,7 @@ class Game:
         print(f"Player 1: {move1}  Player 2: {move2}")
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
-        if move1 == move2:
-            print("** TIE **")
-        elif beats(move1, move2):
-            self.p1.score += 1
-            print("** PLAYER ONE WINS **")
-        else:
-            self.p2.score += 1
-            print("** PLAYER TWO WINS **")
-        print(f"Score: Player One {self.p1.score}, Player Two {self.p2.score}")
+        self.score_round(move1, move2)
 
     # TODO: print:
     #       - which player won
@@ -138,6 +130,18 @@ class Game:
             print(f"Round {round + 1} --")
             self.play_round()
         print("Game over!")
+
+    def score_round(self, move1, move2):
+        if move1 == move2:
+            print("** TIE **")
+        elif beats(move1, move2):
+            self.p1.round_score+= 1
+            print("** PLAYER ONE WINS **")
+        else:
+            self.p2.round_score += 1
+            print("** PLAYER TWO WINS **")
+        print(f"Score: Player One {self.p1.round_score}, Player Two {self.p2.round_score}")
+    
 
     # TODO: define configure() method
     #       - win after 3 rounds
