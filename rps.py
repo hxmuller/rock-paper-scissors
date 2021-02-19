@@ -124,7 +124,7 @@ class Game:
     # TODO: print:
     #       - which player won
     #       - final scores
-    def play_rounds(self, rounds):
+    def rounds_play(self, rounds):
         print("Rock Paper Scissors, Go!")
         for round in range(rounds):
             print(f"Round {round + 1} --")
@@ -166,7 +166,7 @@ def beats(one, two):
 def main():
     """Launcher."""
     game = Game(ReflectPlayer(), ReflectPlayer())
-    game.play_rounds(1000000)
+    game.rounds_play(1000000)
 
 if __name__ == '__main__':
     main()
