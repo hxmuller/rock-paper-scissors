@@ -7,16 +7,12 @@ This program plays a game of Rock, Paper, Scissors between two
 Players, and reports both Player's scores each round.
 """
 
-# imports TODO: Remove comment when done
 import random
 import itertools
 
-# global variables TODO: Remove comment when done
-# NOTE: this is the only global variable 
 moves = ['rock', 'paper', 'scissors']
 
 
-# class definitions TODO: Remove comment when done
 class Player:
     """The Player class is the parent class for all of the Players
     in this game"""
@@ -27,9 +23,6 @@ class Player:
 
     def learn(self, my_move, their_move):
         pass
-
-
-# TODO: test each Player subclass against HumanPlayer
 
 
 class RandomPlayer(Player):
