@@ -129,6 +129,15 @@ class Game:
         for round in range(rounds):
             print(f"Round {round + 1} --")
             self.play_round()
+        if self.p1.round_score == self.p2.round_score:
+            print("** ROUNDS PLAY WINNER: TIE **")
+        elif self.p1.round_score > self.p2.round_score:
+            print("** ROUNDS PLAY WINNER: Player 1 **")
+        else:
+            print("** ROUNDS PLAY WINNER: Player 2 **")
+        print("** FINAL SCORES: **")
+        print(f"** Player 1: {self.p1.round_score} Rounds Won **")
+        print(f"** Player 2: {self.p2.round_score} Rounds Won **")
         print("Game over!")
 
     def score_round(self, move1, move2):
