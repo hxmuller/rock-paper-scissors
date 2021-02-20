@@ -136,6 +136,7 @@ class Game:
         print("** FINAL SCORES: **")
         print(f"** Player 1: {self.p1.round_score} Rounds Won **")
         print(f"** Player 2: {self.p2.round_score} Rounds Won **")
+        print(f"** Ties: {rounds - self.p1.round_score - self.p2.round_score} **")
         print("Game over!")
 
     def score_round(self, move1, move2):
@@ -162,7 +163,7 @@ def beats(one, two):
 def main():
     """Launcher."""
     game = Game(RandomPlayer(), RandomPlayer())
-    game.match_play()
+    game.rounds_play(7)
 
 if __name__ == '__main__':
     main()
