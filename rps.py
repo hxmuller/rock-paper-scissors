@@ -136,7 +136,7 @@ class Game:
             round = 0
             if self.p1.set_score  == 2:
                 print("** Player 1 WINS MATCH **")
-            elif self.p1.set_score == 2:
+            elif self.p2.set_score == 2:
                 print("** Player 2 WINS MATCH **")
             self.p1.round_score = 0
             self.p2.round_score = 0
