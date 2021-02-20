@@ -105,6 +105,8 @@ class Game:
         self.p2 = p2
         self.p1.round_score = 0
         self.p2.round_score = 0
+        self.p1.set_score = 0
+        self.p2.set_score = 0
 
     def play_round(self):
         move1 = self.p1.move()
@@ -117,6 +119,31 @@ class Game:
     # TODO: print:
     #       - which player won
     #       - final scores
+    def match_play(self):
+        print("Rock Paper Scissors, Go!")
+        round = 0
+        while self.p1.set_score < 2 and self.p2.set_score < 2:
+            while self.p1.round_score < 2 and self.p2.round_score < 2:
+                print(f"Round {round + 1} --")
+                self.play_round()
+                round += 1
+                if self.p1.round_score == 2:
+                    print("** Player 1 WINS SET **")
+                    self.p1.set_score += 1
+                elif self.p2.round_score == 2:
+                    print("** Player 2 WINS SET **")
+                    self.p2.set_score += 1
+            round = 0
+            if self.p1.set_score  == 2:
+                print("** Player 1 WINS MATCH **")
+            elif self.p1.set_score == 2:
+                print("** Player 2 WINS MATCH **")
+            self.p1.round_score = 0
+            self.p2.round_score = 0
+
+
+
+
     def rounds_play(self, rounds):
         print("Rock Paper Scissors, Go!")
         for round in range(rounds):
@@ -137,7 +164,7 @@ class Game:
         if move1 == move2:
             print("** TIE **")
         elif beats(move1, move2):
-            self.p1.round_score+= 1
+            self.p1.round_score += 1
             print("** PLAYER ONE WINS **")
         else:
             self.p2.round_score += 1
@@ -158,8 +185,8 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(ReflectPlayer(), ReflectPlayer())
-    game.rounds_play(1000000)
+    game = Game(RandomPlayer(), RandomPlayer())
+    game.match_play()
 
 if __name__ == '__main__':
     main()
