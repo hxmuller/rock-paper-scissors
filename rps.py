@@ -97,16 +97,19 @@ class Game:
     def match_play(self):
         print("Rock Paper Scissors, Go!")
         round = 0
+        set = 1
         while self.p1.set_score < 2 and self.p2.set_score < 2:
             while self.p1.round_score < 2 and self.p2.round_score < 2:
                 print(f"Round {round + 1} --")
                 self.play_round()
                 round += 1
                 if self.p1.round_score == 2:
-                    print("** Player 1 WINS SET **")
+                    print(f"** Player 1 WINS SET {set} **")
+                    set += 1
                     self.p1.set_score += 1
                 elif self.p2.round_score == 2:
-                    print("** Player 2 WINS SET **")
+                    print(f"** Player 2 WINS SET {set} **")
+                    set += 1
                     self.p2.set_score += 1
             round = 0
             if self.p1.set_score  == 2:
