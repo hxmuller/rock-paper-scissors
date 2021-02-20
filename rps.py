@@ -75,30 +75,6 @@ class CyclePlayer(Player):
         self.last_move = my_move
 
 
-# TODO: update Game class to display:
-#       - outcome of each round
-#       - keep score for both players
-#
-#       use beats() function
-#
-#       handle ties
-#
-#       configure to play RandomPlayer vs RandomPlayer
-#
-#       configure to play HumanPlayer vs RandomPlayer
-#
-#       call each players move method once per round
-#
-#       after each round, call learn method to tell each
-#         payer what the other player's move was
-#
-#       some Players do not need to remember, method should pass
-#
-#       method to play single round
-#
-#       method to play match
-#
-#       score and number of rounds played are instance variables
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
@@ -117,7 +93,6 @@ class Game:
         self.score_round(move1, move2)
 
     # TODO: print:
-    #       - which player won
     #       - final scores
     def match_play(self):
         print("Rock Paper Scissors, Go!")
@@ -140,8 +115,6 @@ class Game:
                 print("** Player 2 WINS MATCH **")
             self.p1.round_score = 0
             self.p2.round_score = 0
-
-
 
 
     def rounds_play(self, rounds):
@@ -172,10 +145,8 @@ class Game:
         print(f"Score: Player One {self.p1.round_score}, Player Two {self.p2.round_score}")
     
 
-    # TODO: define configure() method
-    #       - win after 3 rounds
-    #       - human player types quit
-    #       - one player ahead 3 points
+    # TODO: - human player types quit
+
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
