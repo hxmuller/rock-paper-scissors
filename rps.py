@@ -95,7 +95,7 @@ class Game:
     # TODO: print:
     #       - final scores
     def match_play(self):
-        print("Rock Paper Scissors, Go!")
+        print("Rock Paper Scissors, Go!\n")
         round = 0
         set = 1
         while self.p1.set_score < 2 and self.p2.set_score < 2:
@@ -104,24 +104,26 @@ class Game:
                 self.play_round()
                 round += 1
                 if self.p1.round_score == 2:
-                    print(f"** Player 1 WINS SET {set} **")
+                    print(f"** Player 1 WINS SET {set} **\n")
                     set += 1
                     self.p1.set_score += 1
                 elif self.p2.round_score == 2:
-                    print(f"** Player 2 WINS SET {set} **")
+                    print(f"** Player 2 WINS SET {set} **\n")
                     set += 1
                     self.p2.set_score += 1
             round = 0
             if self.p1.set_score  == 2:
                 print("** Player 1 WINS MATCH **")
+                print("Game over!")
             elif self.p2.set_score == 2:
                 print("** Player 2 WINS MATCH **")
+                print("Game over!")
             self.p1.round_score = 0
             self.p2.round_score = 0
 
 
     def rounds_play(self, rounds):
-        print("Rock Paper Scissors, Go!")
+        print("Rock Paper Scissors, Go!\n")
         for round in range(rounds):
             print(f"Round {round + 1} --")
             self.play_round()
@@ -145,7 +147,7 @@ class Game:
         else:
             self.p2.round_score += 1
             print("** PLAYER TWO WINS **")
-        print(f"Score: Player One {self.p1.round_score}, Player Two {self.p2.round_score}")
+        print(f"Score: Player One {self.p1.round_score}, Player Two {self.p2.round_score}\n")
     
 
     # TODO: - human player types quit
