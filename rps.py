@@ -79,10 +79,10 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
-        self.p1.round_score = 0
-        self.p2.round_score = 0
-        self.p1.set_score = 0
-        self.p2.set_score = 0
+        self.p1.rounds_won = 0
+        self.p2.rounds_won = 0
+        self.p1.sets_won = 0
+        self.p2.sets_won = 0
 
     def play_round(self):
         move1 = self.p1.move()
@@ -98,28 +98,28 @@ class Game:
         print("Rock Paper Scissors, Go!\n")
         round = 0
         set = 1
-        while self.p1.set_score < 2 and self.p2.set_score < 2:
-            while self.p1.round_score < 2 and self.p2.round_score < 2:
+        while self.p1.sets_won < 2 and self.p2.sets_won < 2:
+            while self.p1.rounds_won < 2 and self.p2.rounds_won < 2:
                 print(f"Round {round + 1} --")
                 self.play_round()
                 round += 1
-                if self.p1.round_score == 2:
+                if self.p1.rounds_won == 2:
                     print(f"** Player 1 WINS SET {set} **\n")
                     set += 1
-                    self.p1.set_score += 1
-                elif self.p2.round_score == 2:
+                    self.p1.sets_won += 1
+                elif self.p2.rounds_won == 2:
                     print(f"** Player 2 WINS SET {set} **\n")
                     set += 1
-                    self.p2.set_score += 1
+                    self.p2.sets_won += 1
             round = 0
-            if self.p1.set_score  == 2:
+            if self.p1.sets_won  == 2:
                 print("** Player 1 WINS MATCH **")
                 print("Game over!")
-            elif self.p2.set_score == 2:
+            elif self.p2.sets_won == 2:
                 print("** Player 2 WINS MATCH **")
                 print("Game over!")
-            self.p1.round_score = 0
-            self.p2.round_score = 0
+            self.p1.rounds_won = 0
+            self.p2.rounds_won = 0
 
 
     def rounds_play(self, rounds):
@@ -127,28 +127,28 @@ class Game:
         for round in range(rounds):
             print(f"Round {round + 1} --")
             self.play_round()
-        if self.p1.round_score == self.p2.round_score:
+        if self.p1.rounds_won == self.p2.rounds_won:
             print("** ROUNDS PLAY WINNER: TIE **")
-        elif self.p1.round_score > self.p2.round_score:
+        elif self.p1.rounds_won > self.p2.rounds_won:
             print("** ROUNDS PLAY WINNER: Player 1 **")
         else:
             print("** ROUNDS PLAY WINNER: Player 2 **")
         print("** FINAL SCORES: **")
-        print(f"** Player 1: {self.p1.round_score} Rounds Won **")
-        print(f"** Player 2: {self.p2.round_score} Rounds Won **")
-        print(f"** Ties: {rounds - self.p1.round_score - self.p2.round_score} **")
+        print(f"** Player 1: {self.p1.rounds_won} Rounds Won **")
+        print(f"** Player 2: {self.p2.rounds_won} Rounds Won **")
+        print(f"** Ties: {rounds - self.p1.rounds_won - self.p2.rounds_won} **")
         print("Game over!")
 
     def score_round(self, move1, move2):
         if move1 == move2:
             print("** TIE **")
         elif beats(move1, move2):
-            self.p1.round_score += 1
+            self.p1.rounds_won += 1
             print("** PLAYER ONE WINS **")
         else:
-            self.p2.round_score += 1
+            self.p2.rounds_won += 1
             print("** PLAYER TWO WINS **")
-        print(f"Score: Player One {self.p1.round_score}, Player Two {self.p2.round_score}\n")
+        print(f"Score: Player One {self.p1.rounds_won}, Player Two {self.p2.rounds_won}\n")
     
 
     # TODO: - human player types quit
@@ -163,7 +163,7 @@ def beats(one, two):
 def main():
     """Launcher."""
     game = Game(RandomPlayer(), RandomPlayer())
-    game.rounds_play(7)
+    game.match_play()
 
 if __name__ == '__main__':
     main()
