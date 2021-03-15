@@ -92,8 +92,6 @@ class Game:
         self.p2.learn(move2, move1)
         self.score_round(move1, move2)
 
-    # TODO: print:
-    #       - final scores
     def match_play(self):
         print("Match Play")
         print("- First to win 2 rounds wins set")
@@ -156,9 +154,6 @@ class Game:
             print("** PLAYER TWO WINS **")
         print(f"Score: Player One {self.p1.rounds_won}, Player Two {self.p2.rounds_won}\n")
     
-
-    # TODO: - human player types quit
-
 
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
