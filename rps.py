@@ -113,13 +113,15 @@ class Game:
                     self.p2.sets_won += 1
             round = 0
             if self.p1.sets_won  == 2:
-                print("** Player 1 WINS MATCH **")
-                print("Game over!")
+                print("** MATCH PLAY WINNER: Player 1 **")
             elif self.p2.sets_won == 2:
-                print("** Player 2 WINS MATCH **")
-                print("Game over!")
+                print("** MATCH PLAY WINNER: Player 2 **")
             self.p1.rounds_won = 0
             self.p2.rounds_won = 0
+        print("** FINAL SCORES: **")
+        print(f"** Player 1: {self.p1.sets_won} Sets Won **")
+        print(f"** Player 2: {self.p2.sets_won} Sets Won **")
+        print("\nGame over!")
 
 
     def rounds_play(self, rounds):
@@ -137,7 +139,7 @@ class Game:
         print(f"** Player 1: {self.p1.rounds_won} Rounds Won **")
         print(f"** Player 2: {self.p2.rounds_won} Rounds Won **")
         print(f"** Ties: {rounds - self.p1.rounds_won - self.p2.rounds_won} **")
-        print("Game over!")
+        print("\nGame over!")
 
     def score_round(self, move1, move2):
         if move1 == move2:
