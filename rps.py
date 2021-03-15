@@ -95,6 +95,9 @@ class Game:
     # TODO: print:
     #       - final scores
     def match_play(self):
+        print("Match Play")
+        print("- First to win 2 rounds wins set")
+        print("- First to win 2 sets wins the match\n")
         print("Rock Paper Scissors, Go!\n")
         round = 0
         set = 1
@@ -125,6 +128,7 @@ class Game:
 
 
     def rounds_play(self, rounds):
+        print(f"Rounds Play: playing {rounds} rounds\n")
         print("Rock Paper Scissors, Go!\n")
         for round in range(rounds):
             print(f"Round {round + 1} --")
@@ -165,7 +169,7 @@ def beats(one, two):
 def main():
     """Launcher."""
     game = Game(RandomPlayer(), RandomPlayer())
-    game.match_play()
+    game.rounds_play(5)
 
 if __name__ == '__main__':
     main()
