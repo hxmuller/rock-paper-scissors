@@ -155,6 +155,30 @@ class Game:
         print(f"Score: Player One {self.p1.rounds_won}, Player Two {self.p2.rounds_won}\n")
     
 
+def select_game(game):
+    choice = ""
+    rounds = 0
+    print("Game Selection Menu:")
+    print("1 - Rounds Play")
+    print("2 - Match Play")
+    while choice not in ["1", "2" ]:
+        choice = input("Select game: ")
+    if choice == '1':
+        while True:
+            number = input("Enter number of rounds to play: ")
+            try:
+                rounds = int(number)
+                if rounds <= 0:
+                    continue
+                break
+            except ValueError:
+                continue
+        game.rounds_play(rounds)
+    if choice == '2':
+        game.match_play()
+
+
+
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
             (one == 'scissors' and two == 'paper') or
@@ -164,7 +188,7 @@ def beats(one, two):
 def main():
     """Launcher."""
     game = Game(RandomPlayer(), RandomPlayer())
-    game.rounds_play(5)
+    select_game(game)
 
 if __name__ == '__main__':
     main()
