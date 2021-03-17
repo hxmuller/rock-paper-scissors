@@ -155,6 +155,32 @@ class Game:
         print(f"Score: Player One {self.p1.rounds_won}, Player Two {self.p2.rounds_won}\n")
     
 
+def select_players():
+    players = ["One", "Two"]
+    for idx, player in enumerate(players):
+        choice = ""
+        print(f"Player {player} Selection Menu:")
+        print("1 - simple (always plays rock)")
+        print("2 - random (selects random move)")
+        print("3 - reflect (plays opponents last move)")
+        print("4 - human (keyboard driven)")
+        while choice not in ["1", "2", "3", "4"]:
+            choice = input(f"Select Player {player} type: ")
+        if choice == "1":
+            player_type = Player()
+        if choice == "2":
+            player_type = RandomPlayer()
+        if choice == "3":
+            player_type = ReflectPlayer()
+        if choice == "4":
+            player_type = HumanPlayer()
+        if idx == 0:
+            player_1 = player_type
+        if idx == 1:
+            player_2 = player_type
+    return Game(player_1, player_2)
+
+
 def select_game(game):
     choice = ""
     rounds = 0
@@ -187,7 +213,7 @@ def beats(one, two):
 
 def main():
     """Launcher."""
-    game = Game(RandomPlayer(), RandomPlayer())
+    game = select_players()
     select_game(game)
 
 if __name__ == '__main__':
