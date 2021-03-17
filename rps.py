@@ -17,7 +17,6 @@ class Player:
     """The Player class is the parent class for all of the Players
     in this game"""
 
-
     def move(self):
         return 'rock'
 
@@ -34,7 +33,7 @@ class RandomPlayer(Player):
 
 class HumanPlayer(Player):
     """The HumanPlayer requests validated input"""
-    
+
     def move(self):
         human_input = ""
         while human_input not in moves:
@@ -54,7 +53,7 @@ class ReflectPlayer(Player):
 
     def learn(self, my_move, their_move):
         self.last_move = their_move
-        
+
 
 class CyclePlayer(Player):
     """The CyclePlayer remembers its last move, and cycles through
@@ -113,7 +112,7 @@ class Game:
                     set += 1
                     self.p2.sets_won += 1
             round = 0
-            if self.p1.sets_won  == 2:
+            if self.p1.sets_won == 2:
                 print("** MATCH PLAY WINNER: Player 1 **")
             elif self.p2.sets_won == 2:
                 print("** MATCH PLAY WINNER: Player 2 **")
@@ -123,7 +122,6 @@ class Game:
         print(f"** Player 1: {self.p1.sets_won} Sets Won **")
         print(f"** Player 2: {self.p2.sets_won} Sets Won **")
         print("\nGame over!")
-
 
     def rounds_play(self, rounds):
         print(f"Rounds Play: playing {rounds} rounds\n")
@@ -140,7 +138,8 @@ class Game:
         print("** FINAL SCORES: **")
         print(f"** Player 1: {self.p1.rounds_won} Rounds Won **")
         print(f"** Player 2: {self.p2.rounds_won} Rounds Won **")
-        print(f"** Ties: {rounds - self.p1.rounds_won - self.p2.rounds_won} **")
+        print(f"** Ties: {rounds - self.p1.rounds_won - self.p2.rounds_won}
+                **")
         print("\nGame over!")
 
     def score_round(self, move1, move2):
@@ -152,8 +151,9 @@ class Game:
         else:
             self.p2.rounds_won += 1
             print("** PLAYER TWO WINS **")
-        print(f"Score: Player One {self.p1.rounds_won}, Player Two {self.p2.rounds_won}\n")
-    
+        print(f"Score: Player One {self.p1.rounds_won}, Player Two
+              {self.p2.rounds_won}\n")
+
 
 def select_players():
     players = ["One", "Two"]
@@ -187,7 +187,7 @@ def select_game(game):
     print("Game Selection Menu:")
     print("1 - Rounds Play")
     print("2 - Match Play")
-    while choice not in ["1", "2" ]:
+    while choice not in ["1", "2"]:
         choice = input("Select game: ")
     if choice == '1':
         while True:
@@ -204,7 +204,6 @@ def select_game(game):
         game.match_play()
 
 
-
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
             (one == 'scissors' and two == 'paper') or
@@ -216,11 +215,6 @@ def main():
     game = select_players()
     select_game(game)
 
+
 if __name__ == '__main__':
     main()
-
-# TODO: test code by running, import to test functions/methods
-
-# TODO: run pycodestyle against code
-
-# TODO: final check against project documentation and rubric
